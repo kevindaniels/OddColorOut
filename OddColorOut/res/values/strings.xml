@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">OddColorOut</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title">Touch the Odd Color!</string>
+    <string name="start">Start</string>
+    <string name="time">30</string>
     <string name="action_settings">Settings</string>
 
 </resources>
