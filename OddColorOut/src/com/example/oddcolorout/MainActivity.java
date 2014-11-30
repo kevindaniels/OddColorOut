@@ -1,9 +1,12 @@
 package com.example.oddcolorout;
 
 import java.util.Random;
-
 import android.support.v7.app.ActionBarActivity;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -14,6 +17,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+@SuppressLint("NewApi")
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainActivity extends ActionBarActivity
 {
 	Button start;
@@ -28,6 +33,15 @@ public class MainActivity extends ActionBarActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		View decorView = getWindow().getDecorView();
+		// Hide the status bar.
+		int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+		decorView.setSystemUiVisibility(uiOptions);
+		
+		// hide that too if necessary.
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
+		
 		start = (Button) findViewById(R.id.start);
 		timer_TV = (TextView) findViewById(R.id.timer);
 		score_TV = (TextView) findViewById(R.id.score);
@@ -39,7 +53,7 @@ public class MainActivity extends ActionBarActivity
 			square[i] = (View) findViewById(R.id.square1 + i);
 			square[i].setOnClickListener(square_listener);
 			square[i].setTag(i);	// tag used to identify different squares
-		    square[i].setClickable(true);
+		    square[i].setClickable(false);
 		}
 		
 		start.setOnClickListener(start_listener);
